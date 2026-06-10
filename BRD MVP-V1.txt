@@ -1,0 +1,671 @@
+# BUSINESS REQUIREMENTS DOCUMENT (BRD)
+
+## Project Name
+
+Shrimp Laboratory OCR & CSV Automation System
+
+## Version
+
+1.0 MVP
+
+## Project Type
+
+Web-Based Application
+
+## Document Owner
+
+Business Analyst Team
+
+## Project Sponsor
+
+Laboratory Operations Department
+
+---
+
+# 1. EXECUTIVE SUMMARY
+
+Saat ini hasil pengujian laboratorium udang dicatat menggunakan formulir fisik yang ditulis tangan oleh analis laboratorium.
+
+Data hasil pengujian kemudian harus dimasukkan kembali secara manual ke dalam file Excel atau CSV untuk kebutuhan pelaporan dan analisis.
+
+Proses ini menimbulkan beberapa permasalahan:
+
+* Membutuhkan waktu yang lama.
+* Berisiko terjadi kesalahan input.
+* Duplikasi pekerjaan.
+* Sulit melakukan pencarian data historis.
+
+Aplikasi OCR yang diusulkan akan memungkinkan pengguna mengunggah hasil scan formulir laboratorium, melakukan ekstraksi data secara otomatis menggunakan OCR, memberikan kesempatan kepada pengguna untuk melakukan koreksi apabila terdapat kesalahan pembacaan, kemudian menghasilkan file CSV yang siap digunakan.
+
+---
+
+# 2. BUSINESS OBJECTIVES
+
+## Objective 1
+
+Mengurangi proses input data manual dari formulir laboratorium.
+
+Target:
+
+* Pengurangan waktu input minimal 70%.
+
+## Objective 2
+
+Mengurangi human error saat entry data.
+
+Target:
+
+* Akurasi data akhir minimal 95%.
+
+## Objective 3
+
+Mempercepat proses digitalisasi hasil laboratorium.
+
+Target:
+
+* 1 dokumen dapat diproses kurang dari 1 menit.
+
+## Objective 4
+
+Menghasilkan file CSV secara otomatis.
+
+Target:
+
+* Tidak diperlukan re-entry ke Excel.
+
+---
+
+# 3. PROJECT SCOPE
+
+## In Scope
+
+### Document Upload
+
+* Upload PDF
+* Upload JPG
+* Upload PNG
+
+### OCR Processing
+
+* Membaca tulisan tangan
+* Membaca angka
+* Membaca teks
+
+### Data Extraction
+
+* Mapping hasil OCR ke field yang sesuai
+
+### Review & Correction
+
+* User dapat mengubah hasil OCR
+
+### Data Storage
+
+* Menyimpan data hasil verifikasi
+
+### CSV Export
+
+* Export per dokumen
+* Export seluruh data
+
+### History
+
+* Menampilkan histori dokumen yang telah diproses
+
+---
+
+## Out of Scope
+
+* Login
+* Multi-role user
+* Approval workflow
+* Mobile application
+* Integrasi ERP
+* Integrasi alat laboratorium
+* Machine learning training otomatis
+* Multi-template OCR training
+
+---
+
+# 4. TARGET USERS
+
+## Laboratory Staff
+
+Tanggung Jawab:
+
+* Upload dokumen
+* Review hasil OCR
+* Memperbaiki data jika diperlukan
+* Export CSV
+
+Jumlah Pengguna:
+
+* 1 sampai 20 pengguna internal
+
+---
+
+# 5. CURRENT BUSINESS PROCESS
+
+1. Form hasil uji ditulis tangan.
+2. Form discan.
+3. Data diketik ulang ke Excel.
+4. File CSV dibuat secara manual.
+5. Data dikirim ke pihak terkait.
+
+Pain Points:
+
+* Entry data berulang.
+* Human error.
+* Lambat.
+* Tidak ada penyimpanan terpusat.
+
+---
+
+# 6. FUTURE BUSINESS PROCESS
+
+1. Form hasil uji ditulis tangan.
+2. Form discan.
+3. User upload ke aplikasi.
+4. OCR membaca formulir.
+5. Sistem menampilkan hasil OCR.
+6. User melakukan review.
+7. User memperbaiki data bila diperlukan.
+8. Data disimpan.
+9. CSV dihasilkan otomatis.
+
+---
+
+# 7. FUNCTIONAL REQUIREMENTS
+
+## FR-001 Upload Document
+
+Deskripsi:
+
+Pengguna dapat mengunggah dokumen hasil scan.
+
+Supported Format:
+
+* PDF
+* JPG
+* JPEG
+* PNG
+
+Acceptance Criteria:
+
+* File berhasil diunggah.
+* File tersimpan.
+* Preview tersedia.
+
+Priority:
+
+High
+
+---
+
+## FR-002 Document Preview
+
+Deskripsi:
+
+Sistem menampilkan preview dokumen yang diunggah.
+
+Acceptance Criteria:
+
+* Preview tampil dengan jelas.
+* User dapat melakukan zoom.
+
+Priority:
+
+High
+
+---
+
+## FR-003 OCR Processing
+
+Deskripsi:
+
+Sistem membaca tulisan tangan dan angka dari formulir.
+
+Acceptance Criteria:
+
+* OCR berjalan otomatis setelah upload.
+* Progress processing ditampilkan.
+* Hasil OCR tersimpan sementara.
+
+Priority:
+
+High
+
+---
+
+## FR-004 Data Extraction
+
+Deskripsi:
+
+Sistem memetakan hasil OCR ke field yang sesuai.
+
+Contoh:
+
+* Customer Name
+* Farm Name
+* Pond Number
+* Sample Type
+* Sample Date
+* Parameter Result
+
+Acceptance Criteria:
+
+* Data muncul pada form review.
+
+Priority:
+
+High
+
+---
+
+## FR-005 Review OCR Result
+
+Deskripsi:
+
+User dapat melihat hasil ekstraksi OCR.
+
+Acceptance Criteria:
+
+* Semua field ditampilkan.
+* User dapat membaca hasil OCR.
+
+Priority:
+
+High
+
+---
+
+## FR-006 Edit OCR Result
+
+Deskripsi:
+
+User dapat memperbaiki hasil OCR.
+
+Acceptance Criteria:
+
+* Semua field editable.
+* Perubahan dapat disimpan.
+
+Priority:
+
+High
+
+---
+
+## FR-007 Save Result
+
+Deskripsi:
+
+Menyimpan data yang telah diverifikasi.
+
+Acceptance Criteria:
+
+* Data tersimpan ke database.
+* Timestamp tersimpan.
+
+Priority:
+
+High
+
+---
+
+## FR-008 Document History
+
+Deskripsi:
+
+Menampilkan seluruh dokumen yang pernah diproses.
+
+Informasi:
+
+* Nama File
+* Tanggal Upload
+* Status
+* Tanggal Proses
+
+Priority:
+
+Medium
+
+---
+
+## FR-009 Search History
+
+Deskripsi:
+
+Mencari histori dokumen.
+
+Filter:
+
+* Nama file
+* Tanggal
+
+Priority:
+
+Medium
+
+---
+
+## FR-010 Export CSV
+
+Deskripsi:
+
+Menghasilkan file CSV sesuai format bisnis.
+
+Acceptance Criteria:
+
+* CSV dapat diunduh.
+* Kolom sesuai template.
+
+Priority:
+
+High
+
+---
+
+# 8. NON FUNCTIONAL REQUIREMENTS
+
+## Performance
+
+Upload File
+
+* Maksimal 20 MB
+
+OCR Processing
+
+* Maksimal 30 detik per dokumen
+
+CSV Export
+
+* Maksimal 10 detik
+
+---
+
+## Reliability
+
+Target Availability:
+
+95%
+
+---
+
+## Security
+
+Karena MVP tanpa login:
+
+* Akses hanya melalui jaringan internal
+* Validasi file upload
+* Batas ukuran file
+
+---
+
+## Scalability
+
+Target:
+
+* 10.000 dokumen per tahun
+
+---
+
+## Usability
+
+Browser Support:
+
+* Chrome
+* Edge
+* Firefox
+
+Responsive:
+
+* Desktop
+* Laptop
+
+---
+
+# 9. MACHINE LEARNING REQUIREMENTS
+
+## OCR Engine
+
+Tahap MVP:
+
+* TrOCR
+* OpenCV
+
+Training:
+
+* Tidak dilakukan pada MVP
+
+Inference:
+
+* Real-time saat upload
+
+---
+
+## OCR Workflow
+
+Document Upload
+↓
+Image Preprocessing
+↓
+OCR Recognition
+↓
+Field Mapping
+↓
+Review User
+↓
+Save
+
+---
+
+# 10. FRONTEND MODULES
+
+## Dashboard
+
+Fitur:
+
+* Total Dokumen
+* Total Hari Ini
+* Total Berhasil
+* Total Perlu Koreksi
+
+---
+
+## Upload Page
+
+Fitur:
+
+* Upload
+* Preview
+
+---
+
+## OCR Result Page
+
+Fitur:
+
+* Preview dokumen
+* Hasil OCR
+* Edit data
+* Save
+
+---
+
+## History Page
+
+Fitur:
+
+* Daftar dokumen
+* Search
+* Re-open data
+
+---
+
+## Export Page
+
+Fitur:
+
+* Download CSV
+
+---
+
+# 11. BACKEND MODULES
+
+## Document Service
+
+Fungsi:
+
+* Upload
+* Storage
+* Retrieval
+
+---
+
+## OCR Service
+
+Fungsi:
+
+* Menjalankan OCR
+
+---
+
+## Extraction Service
+
+Fungsi:
+
+* Mapping field
+
+---
+
+## Validation Service
+
+Fungsi:
+
+* Validasi format data
+
+Contoh:
+
+pH:
+0 - 14
+
+Salinity:
+0 - 60
+
+---
+
+## Export Service
+
+Fungsi:
+
+* Generate CSV
+
+---
+
+# 12. DATABASE REQUIREMENTS
+
+## Table: documents
+
+* document_id
+* filename
+* file_path
+* upload_time
+* status
+
+---
+
+## Table: extracted_results
+
+* result_id
+* document_id
+* field_name
+* field_value
+* confidence_score
+
+---
+
+## Table: final_results
+
+* result_id
+* document_id
+* field_name
+* final_value
+* updated_time
+
+---
+
+# 13. TECHNICAL ARCHITECTURE
+
+Frontend
+
+* React
+* Vite
+* TailwindCSS
+
+Backend
+
+* FastAPI
+
+OCR
+
+* TrOCR
+* OpenCV
+
+Database
+
+* PostgreSQL
+
+Storage
+
+* Local Storage
+
+Deployment
+
+* Docker
+* Ubuntu Server
+
+---
+
+# 14. MVP SUCCESS CRITERIA
+
+Business
+
+* Pengurangan input manual ≥ 70%
+* Pengurangan waktu proses ≥ 70%
+
+Technical
+
+* OCR Accuracy ≥ 85%
+* Final Data Accuracy ≥ 95%
+* Processing Time ≤ 30 detik
+
+User Acceptance
+
+* User dapat memperbaiki hasil OCR.
+* User dapat menghasilkan CSV tanpa Excel manual.
+* User dapat menemukan histori dokumen dengan mudah.
+
+---
+
+# 15. FUTURE ENHANCEMENT (OUTSIDE MVP)
+
+Phase 2
+
+* Login
+* User Management
+* Audit Trail
+* Multi Template Detection
+
+Phase 3
+
+* OCR Model Fine-Tuning
+* Auto Learning dari koreksi user
+* Confidence Based Highlighting
+
+Phase 4
+
+* Approval Workflow
+* Email Notification
+* Dashboard Analytics
+* API Integration
