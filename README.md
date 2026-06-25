@@ -183,12 +183,29 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 
 Tests live in `tests/` mirroring the `apps/` structure. Fixtures (sample images, expected CSVs) reside in `tests/fixtures/`.
 
+## Continuous Integration
+
+The project uses GitHub Actions to validate every push and pull request to the `develop` and `main` branches.
+
+### What is validated
+
+| Job      | Steps                                                      |
+| -------- | ---------------------------------------------------------- |
+| Frontend | `pnpm install`, TypeScript check, ESLint, Vite build       |
+| Backend  | `uv sync`, Ruff lint check, Ruff format check               |
+
+The frontend and backend jobs run in parallel. The pipeline fails immediately if any step fails.
+
+### Viewing results
+
+Check the **Actions** tab in the GitHub repository. A green checkmark means all checks passed; a red cross indicates a failure. Click on a failed run to see which job and step failed.
+
 ## Future CI/CD
 
 | Stage            | Tools / Actions                           |
 | ---------------- | ----------------------------------------- |
-| Lint             | ESLint (frontend), Ruff (backend)         |
-| Type Check       | TypeScript (frontend), mypy / Pyright (backend) |
+| Lint             | ESLint (frontend), Ruff (backend) *(active)* |
+| Type Check       | TypeScript (frontend), mypy / Pyright (backend) *(TypeScript active)* |
 | Test             | Vitest (frontend), pytest (backend)       |
 | Build            | Vite (frontend), Docker (backend)         |
 | Publish          | Docker Hub or GitHub Container Registry   |
