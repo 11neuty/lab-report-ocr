@@ -1,0 +1,39 @@
+services:
+  frontend:
+    build:
+      context: ./apps/frontend
+      target: development
+    ports:
+      - '${FRONTEND_PORT}:5173'
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=${VITE_API_URL:-http://backend:8000}
+    networks:
+      - lab-report-network
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./apps/backend
+      target: development
+    ports:
+      - '${BACKEND_PORT}:8000'
+    volumes:
+      - ./apps/backend:/app
+      - ./uploads:/app/uploads
+      - ./output:/app/output
+      - ./templates:/app/templates
+    environment:
+      - APP_NAME=${APP_NAME:-lab-report-ocr}
+      - APP_VERSION=${APP_VERSION:-0.1.0}
+      - UPLOAD_PATH=${UPLOAD_PATH:-./uploads}
+      - OUTPUT_PATH=${OUTPUT_PATH:-./output}
+    networks:
+      - lab-report-network
+
+networks:
+  lab-report-network:
+    driver: bridge

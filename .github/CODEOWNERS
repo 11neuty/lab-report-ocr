@@ -1,0 +1,15 @@
+# Default owners for the entire repository
+* @lab-report-ocr/maintainers
+
+# Frontend
+/apps/frontend/ @lab-report-ocr/frontend
+
+# Backend
+/apps/backend/ @lab-report-ocr/backend
+
+# Documentation
+/docs/ @lab-report-ocr/docs
+
+# Infrastructure
+/docker/ @lab-report-ocr/infra
+/docker-compose.yml @lab-report-ocr/infra
