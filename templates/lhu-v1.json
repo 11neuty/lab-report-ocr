@@ -1,0 +1,108 @@
+{
+  "template": "lhu-v1",
+  "version": "1.0.0",
+  "description": "LHU Laboratory Water Analysis Report",
+  "author": "Lab Report OCR",
+  "created_at": "2026-01-15T00:00:00",
+  "fields": [
+    {
+      "id": "customer_name",
+      "type": "text",
+      "required": true,
+      "confidence_threshold": 0.6,
+      "ocr_region": { "x": 120, "y": 80, "width": 400, "height": 30 },
+      "sheet": "Sheet1",
+      "cell": "B2"
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "required": false,
+      "confidence_threshold": 0.5,
+      "ocr_region": { "x": 120, "y": 120, "width": 500, "height": 30 },
+      "sheet": "Sheet1",
+      "cell": "B3"
+    },
+    {
+      "id": "sample_date",
+      "type": "date",
+      "required": true,
+      "confidence_threshold": 0.7,
+      "ocr_region": { "x": 450, "y": 80, "width": 200, "height": 30 },
+      "sheet": "Sheet1",
+      "cell": "C2"
+    },
+    {
+      "id": "ph",
+      "type": "number",
+      "required": true,
+      "confidence_threshold": 0.6,
+      "ocr_region": { "x": 100, "y": 200, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "B4"
+    },
+    {
+      "id": "alkalinity",
+      "type": "number",
+      "required": true,
+      "confidence_threshold": 0.6,
+      "ocr_region": { "x": 100, "y": 240, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "B5"
+    },
+    {
+      "id": "hardness",
+      "type": "number",
+      "required": false,
+      "confidence_threshold": 0.5,
+      "ocr_region": { "x": 100, "y": 280, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "B6"
+    },
+    {
+      "id": "chlorine",
+      "type": "number",
+      "required": false,
+      "confidence_threshold": 0.5,
+      "ocr_region": { "x": 100, "y": 320, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "B7"
+    },
+    {
+      "id": "conductivity",
+      "type": "number",
+      "required": false,
+      "confidence_threshold": 0.5,
+      "ocr_region": { "x": 100, "y": 360, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "B8"
+    },
+    {
+      "id": "turbidity",
+      "type": "number",
+      "required": false,
+      "confidence_threshold": 0.5,
+      "ocr_region": { "x": 400, "y": 200, "width": 180, "height": 28 },
+      "sheet": "Results",
+      "cell": "D4"
+    },
+    {
+      "id": "coliform",
+      "type": "checkbox",
+      "required": true,
+      "confidence_threshold": 0.7,
+      "ocr_region": { "x": 400, "y": 240, "width": 60, "height": 28 },
+      "sheet": "Results",
+      "cell": "D5"
+    },
+    {
+      "id": "e_coli",
+      "type": "checkbox",
+      "required": true,
+      "confidence_threshold": 0.7,
+      "ocr_region": { "x": 400, "y": 280, "width": 60, "height": 28 },
+      "sheet": "Results",
+      "cell": "D6"
+    }
+  ]
+}

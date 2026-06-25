@@ -13,6 +13,7 @@ class Settings(BaseSettings):
 
     upload_path: str = './uploads'
     output_path: str = './output'
+    templates_path: str = './templates'
 
     model_config = {'env_prefix': ''}
 
