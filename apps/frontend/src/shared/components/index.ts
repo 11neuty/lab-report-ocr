@@ -1,1 +1,3 @@
-// Shared UI components — add reusable presentational components here.
+export { default as Header } from './Header'
+export { default as Footer } from './Footer'
+export { default as PageContainer } from './PageContainer'

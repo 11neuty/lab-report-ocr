@@ -1,10 +1,4 @@
-/*
- * Tailwind CSS directives — uncomment after installing Tailwind:
- *
- * @tailwind base;
- * @tailwind components;
- * @tailwind utilities;
- */
+@import './layout.css';
 
 *,
 *::before,
