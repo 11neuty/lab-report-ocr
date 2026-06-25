@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getHealth, type HealthResponse } from '@/shared/api/health'
 
 interface UseHealthResult {
@@ -12,36 +12,35 @@ export function useHealth(): UseHealthResult {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState<HealthResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const cancelledRef = useRef(false)
 
   const fetch = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       const result = await getHealth()
-      setData(result)
+      if (!cancelledRef.current) {
+        setData(result)
+      }
     } catch {
-      setError('Unable to reach backend service.')
+      if (!cancelledRef.current) {
+        setData(null)
+        setError('Unable to reach backend service.')
+      }
     } finally {
-      setLoading(false)
+      if (!cancelledRef.current) {
+        setLoading(false)
+      }
     }
   }, [])
 
   useEffect(() => {
-    let cancelled = false
-    getHealth()
-      .then((result) => {
-        if (!cancelled) setData(result)
-      })
-      .catch(() => {
-        if (!cancelled) setError('Unable to reach backend service.')
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
-      })
+    cancelledRef.current = false
+    fetch()
     return () => {
-      cancelled = true
+      cancelledRef.current = true
     }
-  }, [])
+  }, [fetch])
 
   return { loading, data, error, refresh: fetch }
 }

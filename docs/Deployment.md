@@ -10,7 +10,15 @@
 
 ## Environment Configuration
 
-<!-- Environment variables and secrets management. -->
+### `VITE_API_URL`
+
+Set `VITE_API_URL` to the public-facing backend URL for the frontend build:
+
+```bash
+VITE_API_URL=https://api.example.com pnpm build
+```
+
+In development, the default `http://localhost:8000` is correct (see [Development Guide](./Development-Guide.md#networking)).
 
 ## Docker Deployment
 

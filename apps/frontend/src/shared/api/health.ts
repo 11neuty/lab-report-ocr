@@ -7,6 +7,6 @@ export interface HealthResponse {
 }
 
 export async function getHealth(): Promise<HealthResponse> {
-  const { data } = await http.get<HealthResponse>('/health')
-  return data
+  const { data: body } = await http.get<{ data: HealthResponse }>('/health')
+  return body.data
 }
