@@ -1,7 +1,8 @@
 import http from '@/shared/api/http'
 
 export function buildPreviewUrl(uploadId: string): string {
-  return `/upload/${uploadId}/file`
+  const baseUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+  return `${baseUrl}/upload/${uploadId}/file`
 }
 
 export async function checkFileExists(uploadId: string): Promise<boolean> {
