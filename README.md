@@ -109,11 +109,36 @@ lab-report-ocr/
 
 ## Development Workflow
 
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+- [Node.js](https://nodejs.org/) 22+ (for local frontend work)
+- [pnpm](https://pnpm.io/installation) (for local frontend work)
+- [Python](https://www.python.org/) 3.14+ (for local backend work)
+- [uv](https://docs.astral.sh/uv/) (for local backend work)
+
+### Quick Start (Docker)
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+- Frontend: http://localhost:5173
+- Backend:  http://localhost:8000
+- Health:   http://localhost:8000/health
+
+### Local Development
+
 1. **Clone** the repository and copy `.env.example` to `.env`.
 2. **Install** dependencies:
    - Frontend: `pnpm install`
-   - Backend: `pip install -r requirements.txt`
-3. **Start** the development environment via `docker compose up` or run each service individually.
+   - Backend: `uv sync`
+3. **Start** services:
+   - Docker: `docker compose up`
+   - Or run individually:
+     - Frontend: `pnpm dev` (from `apps/frontend`)
+     - Backend: `uv run uvicorn app.main:app --reload` (from `apps/backend`)
 4. **Develop** on a feature branch (see Branch Strategy below).
 5. **Commit** following the project's commit convention.
 6. **Open a pull request** against the `develop` branch.

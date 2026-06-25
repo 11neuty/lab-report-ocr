@@ -1,0 +1,8 @@
+.venv
+.git
+dist
+__pycache__
+.pytest_cache
+.ruff_cache
+*.egg-info
+uv.lock
