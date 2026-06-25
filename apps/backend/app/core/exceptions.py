@@ -14,19 +14,22 @@ class NotFoundError(AppError):
         super().__init__(message, status_code=404)
 
 
-class ValidationError(AppError):
-    def __init__(self, message: str = 'Validation failed') -> None:
-        super().__init__(message, status_code=422)
-
-
 async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
     if isinstance(exc, AppError):
         return JSONResponse(
             status_code=exc.status_code,
-            content={'detail': exc.message},
+            content={
+                'success': False,
+                'message': exc.message,
+                'data': None,
+            },
         )
 
     return JSONResponse(
         status_code=500,
-        content={'detail': 'Internal server error'},
+        content={
+            'success': False,
+            'message': 'Internal server error',
+            'data': None,
+        },
     )
