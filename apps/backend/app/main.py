@@ -8,6 +8,7 @@ from app.core.config import settings
 from app.core.exceptions import AppError, global_exception_handler
 from app.core.logging import configure_logging
 from app.modules.health.router import router as health_router
+from app.modules.upload.router import router as upload_router
 
 
 @asynccontextmanager
@@ -34,3 +35,4 @@ app.add_exception_handler(AppError, global_exception_handler)  # type: ignore[ar
 app.add_exception_handler(Exception, global_exception_handler)
 
 app.include_router(health_router)
+app.include_router(upload_router)
