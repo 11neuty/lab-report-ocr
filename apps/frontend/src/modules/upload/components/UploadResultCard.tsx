@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import type { UploadResult } from '@/modules/upload/types'
 
 interface UploadResultCardProps {
@@ -11,6 +12,8 @@ function formatSize(bytes: number): string {
 }
 
 export default function UploadResultCard({ result }: UploadResultCardProps) {
+  const navigate = useNavigate()
+
   return (
     <div className="result-card">
       <h3 className="result-card__title">Upload Successful</h3>
@@ -24,6 +27,12 @@ export default function UploadResultCard({ result }: UploadResultCardProps) {
         <dt>MIME Type</dt>
         <dd>{result.mime_type}</dd>
       </dl>
+      <button
+        className="result-card__preview-btn"
+        onClick={() => navigate('/preview', { state: { uploadResult: result } })}
+      >
+        Preview Document
+      </button>
     </div>
   )
 }
