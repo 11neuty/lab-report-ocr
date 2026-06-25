@@ -1,0 +1,136 @@
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.upload-page__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.upload-page__desc {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.dropzone {
+  width: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  color: #888;
+}
+
+.dropzone:hover,
+.dropzone--dragging {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #333;
+}
+
+.dropzone__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dropzone__name {
+  font-weight: 600;
+  color: #222;
+}
+
+.dropzone__size {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.upload-page__actions {
+  margin-top: 1rem;
+}
+
+.upload-btn {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.upload-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upload-page__loading {
+  margin-top: 1rem;
+  color: #888;
+  font-style: italic;
+}
+
+.upload-page__error {
+  margin-top: 1rem;
+  color: #ef4444;
+}
+
+.result-card {
+  width: 100%;
+  margin-top: 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+}
+
+.result-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.result-card__details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  font-size: 0.875rem;
+}
+
+.result-card__details dt {
+  color: #888;
+}
+
+.result-card__details dd {
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.result-card__preview-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.result-card__preview-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
