@@ -19,8 +19,22 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
 
 app = FastAPI(
     title=settings.app_name,
+    description=(
+        'Backend API for the Lab Report OCR system. Provides endpoints for'
+        ' health monitoring, file upload, file retrieval, and file management.'
+    ),
     version=settings.app_version,
     lifespan=lifespan,
+    openapi_tags=[
+        {
+            'name': 'health',
+            'description': 'Health check and service status endpoints.',
+        },
+        {
+            'name': 'upload',
+            'description': 'File upload, retrieval, and deletion endpoints.',
+        },
+    ],
 )
 
 app.add_middleware(

@@ -35,8 +35,15 @@ class StorageService:
             relative_path=str(dest.relative_to(self.upload_path)),
         )
 
+    def _resolve_upload_dir(self, upload_id: str) -> Path:
+        try:
+            parsed = uuid.UUID(hex=upload_id)
+        except ValueError, AttributeError:
+            raise NotFoundError('Upload not found')
+        return self.upload_path / parsed.hex
+
     def get_file(self, upload_id: str) -> Path:
-        upload_dir = self.upload_path / upload_id
+        upload_dir = self._resolve_upload_dir(upload_id)
         if not upload_dir.exists():
             raise NotFoundError('Upload not found')
 
@@ -49,7 +56,7 @@ class StorageService:
     def delete_upload(self, upload_id: str) -> None:
         import shutil
 
-        upload_dir = self.upload_path / upload_id
+        upload_dir = self._resolve_upload_dir(upload_id)
         if not upload_dir.exists():
             raise NotFoundError('Upload not found')
 
